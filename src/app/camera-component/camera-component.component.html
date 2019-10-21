@@ -1,12 +1,14 @@
 <div id="container">
+  <h3 *ngIf="currentNumber>0"> {{ currentNumber }}</h3>
 	<video id="preview" playsinline #preview autoplay></video>
-	<video playsinline #recording controls loop></video>
+	<video #recording controls></video>
+
 	<div>
 		<button id="start" (click)="startCamera()">Start camera</button>
-		<button id="record" *ngIf="!show" (click)="record()">Start Recording</button>
-    <button id="stop" *ngIf="show">Stop Recording</button>
-		<button id="play" disabled>Play</button>
-		<button id="download" disabled>Download</button>
+		<button id="record" *ngIf="!recordShow" (click)="record()" [disabled]="recordDisable">Start Recording</button>
+    <button id="stop" *ngIf="recordShow" (click)="stop()">Stop Recording</button>
+		<button id="play" (click)="play()" [disabled]="showPlay">Play</button>
+		<!-- <button id="download" disabled>Download</button> -->
 	</div>
 	<div>
 		<h4>Media Stream Constraints options</h4>
@@ -18,4 +20,7 @@
 
 	<!-- <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record"
        title="View source for this page on GitHub" id="viewSource">View source on GitHub</a> -->
+</div>
+ <div class="bottom">
+  <pre id="log"></pre>
 </div>
