@@ -1,5 +1,21 @@
-<p>
-camera-component works!
-</p>
+<div id="container">
+	<video id="preview" playsinline #preview autoplay></video>
+	<video playsinline #recording controls loop></video>
+	<div>
+		<button id="start" (click)="startCamera()">Start camera</button>
+		<button id="record" *ngIf="!show" (click)="record()">Start Recording</button>
+    <button id="stop" *ngIf="show">Stop Recording</button>
+		<button id="play" disabled>Play</button>
+		<button id="download" disabled>Download</button>
+	</div>
+	<div>
+		<h4>Media Stream Constraints options</h4>
+		<p>Echo cancellation: <input type="checkbox" id="echoCancellation"></p>
+	</div>
+	<div>
+		<span id="errorMsg"></span>
+	</div>
 
-<video #video autoplay></video>
+	<!-- <a href="https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record"
+       title="View source for this page on GitHub" id="viewSource">View source on GitHub</a> -->
+</div>
